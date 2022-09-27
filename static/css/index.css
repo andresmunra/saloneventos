@@ -7,7 +7,7 @@ background-position: center;
 }
 
 .bg-login-image {
-    background: url("../Img/Logo.jpg");
+    background: url("/static/img/Logo.jpg");
     background-position: center;
     background-size: auto ;
     border: 0px;
