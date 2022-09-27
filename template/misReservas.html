@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static i18n %}
+{% block main %}
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-12"> 
+                <table class="table" style="margin-top: 50px; margin-bottom: 100px;">
+                    <thead>
+                    <tr>
+                        <th style="color: #e43c5c;" scope="col">Id</th>
+                        <th style="color: #e43c5c;"  scope="col">Fecha reserva</th>
+                        <th style="color: #e43c5c;"  scope="col">Salon</th>
+                        <th style="color: #e43c5c;"  scope="col">Codigo de reserva</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for reserva in reservas %}
+                    <tr>
+                        <th scope="row">{{ reserva.id }}</th>
+                        <td>{{ reserva.date }}</td>
+                        <td>{{ reserva.name }}</td>
+                        <td>{{ reserva.codReserva }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% load static i18n %}
+{% block main %}
+<section id="portfolio" class="portfolio">
+    <div class="container">
+    <div class="section-title">
+        <h2>Portfolio</h2>
+        <h3>Revisa nuestro <span>Portfolio</span></h3>
+        <p>Es solo una pequeña muestra, de nuestro trabajo que hacemso con tanta pasion.</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+            <li data-filter=".filter-app">SALONES</li>
+        </ul>
+        </div>
+    </div>
+    <div class="row portfolio-container">
+        {% for salon in salones %}    
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="{{ salon.image.url }}" class="img-fluid" alt="">
+        <div class="portfolio-info">
+            <h4>{{ salon.name }}</h4>
+            <p>{{ salon.description }}</p>
+            {% if user.is_authenticated %}
+                <form id="register-form" name="register-form" class="row" action="/saveReserva/{{ salon.id }}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="date" name="date" value="" />
+                <button type="submit" class="btn btn-primary">Reservar Salon</a>
+                </form>
+            {% endif %}
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</section><!-- End Portfolio Section -->
+
+{% endblock %}
