@@ -28,8 +28,9 @@ SECRET_KEY = 'django-insecure-qc=z_v&ic&m8ii0ue_*hj77#vo-xkwbcq98t$w!!^d)w2fkc*a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = ['https://pacific-coast-78888.herokuapp.com', 'https://saloneventos.herokuapp.com']
 
 # Application definition
 
@@ -83,10 +84,10 @@ if TESTING==False:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'salonReservas',
-            'HOST': 'localhost',
-            'USER': 'postgres',
-            'PASSWORD': 'admin',
+            'NAME': 'du1jkr7p92de9',
+            'HOST': 'ec2-54-91-223-99.compute-1.amazonaws.com',
+            'USER': 'cculvijeccycao',
+            'PASSWORD': 'dc82f31c2599e5f06df18c73374543e88bc4e50bd3aa249f73afe649cb6afcea',
             'DATABSE_PORT': '5432'
         }
     }
@@ -144,4 +145,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 AUTH_USER_MODEL = "users.UserProfile"
