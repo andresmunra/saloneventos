@@ -84,10 +84,10 @@ if TESTING==False:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'du1jkr7p92de9',
-            'HOST': 'ec2-54-91-223-99.compute-1.amazonaws.com',
-            'USER': 'cculvijeccycao',
-            'PASSWORD': 'dc82f31c2599e5f06df18c73374543e88bc4e50bd3aa249f73afe649cb6afcea',
+            'NAME': 'd3v3thc88llu6l',
+            'HOST': 'ec2-3-213-66-35.compute-1.amazonaws.com',
+            'USER': 'ackenhzaahvgfy',
+            'PASSWORD': '7e6654727675e3b8d082fc6270540bb25bf8678542f1d3293d96b4e8d0e3ad8d',
             'DATABSE_PORT': '5432'
         }
     }
