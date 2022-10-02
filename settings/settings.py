@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os.path
 import sys
+import dj_database_url
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qc=z_v&ic&m8ii0ue_*hj77#vo-xkwbcq98t$w!!^d)w2fkc*a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
@@ -80,24 +82,17 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 TESTING = sys.argv[1:2] == ['test']
-if TESTING==False:
+if DEBUG==False:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dds83u05onmu63',
-            'HOST': 'ec2-44-208-236-253.compute-1.amazonaws.com',
-            'USER': 'swigqlupfzwcan',
-            'PASSWORD': '820e0141a99788aab8af40c71d1087cfbfce1383dcf3fe0e5940005985bf9829',
-            'DATABSE_PORT': '5432'
-        }
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
     }
 else:
     DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.sqlite3",
-        "TEST": {
-        "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
