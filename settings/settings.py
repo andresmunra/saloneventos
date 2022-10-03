@@ -85,10 +85,16 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 TESTING = sys.argv[1:2] == ['test']
 if DEBUG==False:
     DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
-    }
+        
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'dds83u05onmu63',
+            'HOST': 'ec2-44-208-236-253.compute-1.amazonaws.com',
+            'USER': 'swigqlupfzwcan',
+            'PASSWORD': '820e0141a99788aab8af40c71d1087cfbfce1383dcf3fe0e5940005985bf9829',
+            'DATABSE_PORT': '5432'
+        }
+}
 else:
     DATABASES = {
     'default': {
