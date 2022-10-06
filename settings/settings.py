@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os.path
-import sys
-import dj_database_url
 from decouple import config
 
 
@@ -28,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qc=z_v&ic&m8ii0ue_*hj77#vo-xkwbcq98t$w!!^d)w2fkc*a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
@@ -86,10 +84,10 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 DATABASES = {    
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8t9gufhdci61r',
-        'HOST': 'ec2-44-209-158-64.compute-1.amazonaws.com',
-        'USER': 'zacomlksuyrtby',
-        'PASSWORD': '1d996df92c6854e65185bb561422c5a5d699fac964ba21c52ff0e6a23475b73b',
+        'NAME': 'dbogcda194ict9',
+        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
+        'USER': 'jdmjfexdviaqov',
+        'PASSWORD': '47c59805a237d4e8af51bf34dbb783e64c9f0dc9479dbda30684c4930d1db2d9',
         'DATABSE_PORT': '5432'
     }
 }   
@@ -127,7 +125,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
@@ -143,5 +140,3 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 AUTH_USER_MODEL = "users.UserProfile"
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
