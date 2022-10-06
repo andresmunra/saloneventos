@@ -6,6 +6,7 @@ import uuid
 
 def salonesView(request):
     salones = Salones.objects.all().order_by('id')
+    print(salones)
     return render(request, "salones.html", {'salones': salones})
 
 def homeView(request):

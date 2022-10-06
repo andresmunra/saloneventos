@@ -82,27 +82,17 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-TESTING = sys.argv[1:2] == ['test']
-if TESTING==False:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dbogcda194ict9',
-            'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
-            'USER': 'jdmjfexdviaqov',
-            'PASSWORD': '47c59805a237d4e8af51bf34dbb783e64c9f0dc9479dbda30684c4930d1db2d9',
-            'DATABSE_PORT': '5432'
-        }
-    }
-else:
-    DATABASES = {
+DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.sqlite3",
-        "TEST": {
-        "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbogcda194ict9',
+        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
+        'USER': 'jdmjfexdviaqov',
+        'PASSWORD': '47c59805a237d4e8af51bf34dbb783e64c9f0dc9479dbda30684c4930d1db2d9',
+        'DATABSE_PORT': '5432'
     }
-}   
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
