@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os.path
+import sys
 from decouple import config
 
 
@@ -26,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qc=z_v&ic&m8ii0ue_*hj77#vo-xkwbcq98t$w!!^d)w2fkc*a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
@@ -81,14 +82,25 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {    
+TESTING = sys.argv[1:2] == ['test']
+if TESTING==False:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'dbogcda194ict9',
+            'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
+            'USER': 'jdmjfexdviaqov',
+            'PASSWORD': '47c59805a237d4e8af51bf34dbb783e64c9f0dc9479dbda30684c4930d1db2d9',
+            'DATABSE_PORT': '5432'
+        }
+    }
+else:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbogcda194ict9',
-        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
-        'USER': 'jdmjfexdviaqov',
-        'PASSWORD': '47c59805a237d4e8af51bf34dbb783e64c9f0dc9479dbda30684c4930d1db2d9',
-        'DATABSE_PORT': '5432'
+        "ENGINE": "django.db.backends.sqlite3",
+        "TEST": {
+        "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
+        }
     }
 }   
 
