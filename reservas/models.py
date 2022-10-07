@@ -6,7 +6,7 @@ class Salones(models.Model):
     id = models.AutoField(primary_key=True),
     name = models.CharField(max_length=120, blank=False, null=False)
     description = models.TextField(blank=False, null=False)
-    image = models.ImageField(upload_to='imagenes/', default='imagenes/default.png')
+    image = models.ImageField(upload_to='salones/', default='salones/default.png')
     
     def __str__(self):
         return self.name 
