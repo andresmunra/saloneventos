@@ -18,7 +18,7 @@
     <div class="row portfolio-container">
         {% for salon in salones %}    
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-        <img src="{{ salon.image.url }}" class="img-fluid" alt="">
+        <img src="/media/{{ salon.image }}" class="img-fluid" alt="">
         <div class="portfolio-info">
             <h4>{{ salon.name }}</h4>
             <p>{{ salon.description }}</p>
